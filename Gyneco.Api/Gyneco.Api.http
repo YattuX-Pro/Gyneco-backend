@@ -1,0 +1,6 @@
+@Gyneco.Api_HostAddress = http://localhost:5204
+
+GET {{Gyneco.Api_HostAddress}}/Swagger/OpenAPI/
+Accept: application/json
+
+###
