@@ -1,8 +1,7 @@
-﻿using Gyneco.Domain;
+﻿using Gyneco.Application.Contracts.Identity;
+using Gyneco.Application.Models.Identity;
+using Gyneco.Domain;
 using Gyneco.Identity.DbContext;
-using Gyneco.Identity.Models;
-using Gyneco.Persistence.Contracts.Identity;
-using Gyneco.Persistence.Models.Identity;
 using Kada.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
+using Gyneco.Domain.Identity;
 
 namespace Gyneco.Identity
 {
@@ -24,8 +24,6 @@ namespace Gyneco.Identity
             services.AddDbContext<GynecoIdentityDbContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("GynecoConnectionString")));
 
-            /* services.AddDbContext<GynecoIdentityDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("GynecoConnectionString")));*/
 
             services.AddIdentity<ApplicationUser, ApplicationUserRoles>()
                 .AddEntityFrameworkStores<GynecoIdentityDbContext>()
@@ -39,8 +37,8 @@ namespace Gyneco.Identity
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IApplicationUser, ApplicationUser>();
             services.AddScoped<RoleManager<ApplicationUserRoles>>();
+            services.AddScoped<UserManager<ApplicationUser>>();
 
             services.AddAuthentication(options =>
             {

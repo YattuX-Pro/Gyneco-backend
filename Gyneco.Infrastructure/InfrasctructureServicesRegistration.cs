@@ -1,8 +1,8 @@
-﻿using Gyneco.Infrastructure.EmailService;
+﻿using Gyneco.Application.Contracts.Email;
+using Gyneco.Application.Contracts.Logging;
+using Gyneco.Application.Models.Email;
+using Gyneco.Infrastructure.EmailService;
 using Gyneco.Infrastructure.Logging;
-using Gyneco.Persistence.Contracts.Email;
-using Gyneco.Persistence.Contracts.Logging;
-using Gyneco.Persistence.Models.Email;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

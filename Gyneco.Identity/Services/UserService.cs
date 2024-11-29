@@ -1,11 +1,12 @@
-﻿using Gyneco.Identity.Models;
-using Gyneco.Identity.Models.Search;
-using Gyneco.Persistence.Contracts.Identity;
-using Gyneco.Persistence.Models.Identity;
+﻿using Gyneco.Application.Contracts.Identity;
+using Gyneco.Application.Models.Identity;
+using Gyneco.Application.Models.Search;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using Gyneco.Domain;
+using Gyneco.Domain.Identity;
 
 namespace Kada.Identity.Services
 {

@@ -1,13 +1,13 @@
-﻿using Gyneco.Application.Exceptions;
-using Gyneco.Identity.Models;
-using Gyneco.Persistence.Contracts.Identity;
-using Gyneco.Persistence.Models.Identity;
+﻿using Gyneco.Application.Contracts.Identity;
+using Gyneco.Application.Exceptions;
+using Gyneco.Application.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Gyneco.Domain.Identity;
 
 namespace Kada.Identity.Services
 {

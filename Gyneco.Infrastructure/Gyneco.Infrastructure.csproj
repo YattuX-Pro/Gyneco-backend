@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gyneco.Persistence\Gyneco.Persistence.csproj" />
+    <ProjectReference Include="..\Gyneco.Application\Gyneco.Application.csproj" />
   </ItemGroup>
 
 </Project>

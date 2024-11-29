@@ -1,6 +1,7 @@
 ﻿
+using Gyneco.Application.Contracts.Identity;
+using Gyneco.Domain;
 using Gyneco.Domain.Common;
-using Gyneco.Persistence.Contracts.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gyneco.Persistence.DatabaseContext
@@ -19,6 +20,11 @@ namespace Gyneco.Persistence.DatabaseContext
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(GynecoDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Ignore<Patient>();
+            modelBuilder.Ignore<Doctor>();
+            modelBuilder.Ignore<Schedule>();
+            modelBuilder.Ignore<Appointment>();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -37,5 +43,13 @@ namespace Gyneco.Persistence.DatabaseContext
 
             return base.SaveChangesAsync(cancellationToken);
         }
+
+        public DbSet<Appointment> Appointment { get; set; }
+        public DbSet<Clinic> Clinic { get; set; }
+        public DbSet<Doctor> Doctor { get; set; }
+        public DbSet<MedicalRecord> MedicalRecord { get; set; }
+        public DbSet<Patient> Patient { get; set; }
+        public DbSet<Prescription> Prescription { get; set; }
+        public DbSet<Schedule> Schedule { get; set; }
     }
 }

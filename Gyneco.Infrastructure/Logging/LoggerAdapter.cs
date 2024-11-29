@@ -1,5 +1,5 @@
 ﻿
-using Gyneco.Persistence.Contracts.Logging;
+using Gyneco.Application.Contracts.Logging;
 using Microsoft.Extensions.Logging;
 
 namespace Gyneco.Infrastructure.Logging

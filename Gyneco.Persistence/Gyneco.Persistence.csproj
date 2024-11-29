@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gyneco.Domain\Gyneco.Domain.csproj" />
+    <ProjectReference Include="..\Gyneco.Application\Gyneco.Application.csproj" />
   </ItemGroup>
 
 </Project>
