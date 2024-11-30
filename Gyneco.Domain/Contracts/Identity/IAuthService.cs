@@ -3,7 +3,7 @@
 
 using Gyneco.Application.Models.Identity;
 
-namespace Gyneco.Application.Contracts.Identity
+namespace Gyneco.Domain.Contracts.Identity
 {
     public interface IAuthService
     {

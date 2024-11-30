@@ -1,5 +1,4 @@
-﻿
-using Gyneco.Application.Contracts.Logging;
+﻿using Gyneco.Domain.Contracts.Logging;
 using Microsoft.Extensions.Logging;
 
 namespace Gyneco.Infrastructure.Logging

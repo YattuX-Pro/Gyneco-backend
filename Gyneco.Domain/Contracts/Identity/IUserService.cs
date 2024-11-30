@@ -1,8 +1,7 @@
-﻿
-using Gyneco.Application.Models.Identity;
+﻿using Gyneco.Application.Models.Identity;
 using Gyneco.Application.Models.Search;
 
-namespace Gyneco.Application.Contracts.Identity
+namespace Gyneco.Domain.Contracts.Identity
 {
     public interface IUserService
     {

@@ -1,8 +1,7 @@
-﻿using Gyneco.Application.Models.Search;
-using Gyneco.Domain.Common;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Gyneco.Application.Models.Search;
 
-namespace Gyneco.Application.Contracts.Peristence
+namespace Gyneco.Domain.Contracts.Persistence
 {
     public interface IGenericRepository<Entity> where Entity : class
     {

@@ -1,5 +1,4 @@
-﻿using Gyneco.Application.Contracts.Identity;
-using Gyneco.Application.Models.Identity;
+﻿using Gyneco.Application.Models.Identity;
 using Gyneco.Domain;
 using Gyneco.Identity.DbContext;
 using Kada.Identity.Services;
@@ -11,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
+using Gyneco.Domain.Contracts.Identity;
 using Gyneco.Domain.Identity;
 
 namespace Gyneco.Identity

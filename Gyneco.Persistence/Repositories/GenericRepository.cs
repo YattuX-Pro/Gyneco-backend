@@ -1,6 +1,4 @@
-﻿
-using Gyneco.Application.Contracts.Peristence;
-using Gyneco.Application.Models.Search;
+﻿using Gyneco.Application.Models.Search;
 using Gyneco.Domain.Common;
 using Gyneco.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
+using Gyneco.Domain.Contracts.Persistence;
 
 namespace Kada.persistence.Repositories
 {

@@ -4,8 +4,7 @@ using Gyneco.Persistence;
 using Gyneco.Application;
 using Serilog;
 using Gyneco.Api.Middleware;
-using Gyneco.Persistence.DatabaseContext;
-using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

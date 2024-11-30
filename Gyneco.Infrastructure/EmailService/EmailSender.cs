@@ -7,8 +7,8 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using Gyneco.Application.Contracts.Email;
 using Gyneco.Application.Models.Email;
+using Gyneco.Domain.Contracts.Email;
 
 namespace Gyneco.Infrastructure.EmailService
 {

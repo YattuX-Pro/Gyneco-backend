@@ -1,11 +1,11 @@
-﻿using Gyneco.Application.Contracts.Identity;
-using Gyneco.Application.DTOs.Search;
+﻿using Gyneco.Application.DTOs.Search;
 using Gyneco.Application.Models.Identity;
 using Gyneco.Application.Models.Search;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using Gyneco.Domain.Contracts.Identity;
 
 namespace Kada.Api.Controllers
 {

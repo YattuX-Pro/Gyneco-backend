@@ -1,5 +1,4 @@
-﻿using Gyneco.Application.Contracts.Identity;
-using Gyneco.Application.Exceptions;
+﻿using Gyneco.Application.Exceptions;
 using Gyneco.Application.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -7,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Gyneco.Domain.Contracts.Identity;
 using Gyneco.Domain.Identity;
 
 namespace Kada.Identity.Services
@@ -95,7 +95,7 @@ namespace Kada.Identity.Services
             var userClaims = await _userManager.GetClaimsAsync(user);
             var roles = await _userManager.GetRolesAsync(user);
 
-            var roleClaims = roles.Select(q => new Claim(ClaimTypes.Role, q)).ToList();
+            var roleClaims = roles.Select(r => new Claim(ClaimTypes.Role, r)).ToList();
 
             var claims = new[]
             {

@@ -1,5 +1,5 @@
-﻿using Gyneco.Application.Contracts.Identity;
-using Gyneco.Application.Models.Identity;
+﻿using Gyneco.Application.Models.Identity;
+using Gyneco.Domain.Contracts.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gyneco.Api.Controllers

@@ -1,7 +1,6 @@
-﻿
-using Gyneco.Application.Contracts.Identity;
-using Gyneco.Domain;
+﻿using Gyneco.Domain;
 using Gyneco.Domain.Common;
+using Gyneco.Domain.Contracts.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gyneco.Persistence.DatabaseContext

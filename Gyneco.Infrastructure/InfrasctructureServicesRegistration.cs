@@ -1,6 +1,6 @@
-﻿using Gyneco.Application.Contracts.Email;
-using Gyneco.Application.Contracts.Logging;
-using Gyneco.Application.Models.Email;
+﻿using Gyneco.Application.Models.Email;
+using Gyneco.Domain.Contracts.Email;
+using Gyneco.Domain.Contracts.Logging;
 using Gyneco.Infrastructure.EmailService;
 using Gyneco.Infrastructure.Logging;
 using Microsoft.Extensions.Configuration;

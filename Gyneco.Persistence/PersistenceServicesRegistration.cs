@@ -1,4 +1,4 @@
-﻿using Gyneco.Application.Contracts.Peristence;
+﻿using Gyneco.Domain.Contracts.Persistence;
 using Gyneco.Persistence.DatabaseContext;
 using Kada.persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
