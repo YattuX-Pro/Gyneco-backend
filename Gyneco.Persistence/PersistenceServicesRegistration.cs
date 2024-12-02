@@ -1,4 +1,5 @@
 ﻿using Gyneco.Domain.Contracts.Persistence;
+using Gyneco.Domain.Contracts.UnitOfWork;
 using Gyneco.Persistence.DatabaseContext;
 using Kada.persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ namespace Gyneco.Persistence
             });
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             return services;
         }
     }

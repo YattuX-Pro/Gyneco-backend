@@ -1,10 +1,9 @@
+using Gyneco.Api.Middleware;
+using Gyneco.Application;
 using Gyneco.Identity;
 using Gyneco.Infrastructure;
 using Gyneco.Persistence;
-using Gyneco.Application;
 using Serilog;
-using Gyneco.Api.Middleware;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,9 +24,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowLocalhost4200", builder =>
     {
         builder.AllowAnyHeader()
-               .AllowAnyMethod()
-               .WithOrigins("http://localhost:4200")
-               .AllowCredentials();
+            .AllowAnyMethod()
+            .WithOrigins("http://localhost:4200")
+            .AllowCredentials();
     });
 });
 
@@ -52,7 +51,7 @@ app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowLocalhost4200"); 
+app.UseCors("AllowLocalhost4200");
 
 app.UseAuthentication();
 app.UseAuthorization();

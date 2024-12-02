@@ -28,9 +28,4 @@
     <ProjectReference Include="..\Gyneco.Domain\Gyneco.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
