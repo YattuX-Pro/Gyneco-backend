@@ -1,3 +1,4 @@
+using Gyneco.Domain.Contracts.Identity;
 using Gyneco.Domain.Contracts.Persistence;
 using Gyneco.Domain.Contracts.UnitOfWork;
 using Gyneco.Persistence.DatabaseContext;
@@ -13,9 +14,11 @@ public class UnitOfWork : IUnitOfWork
     public IPrescriptionRepository PrescriptionRepository { get; private set; }
     public IScheduleRepository ScheduleRepository { get; private set; }
     public IAppointmentRepository AppointmentRepository { get; private set; }
+    public IUserService UserService { get; private set; }
 
-    public UnitOfWork(GynecoDbContext gynecoDbContext)
+    public UnitOfWork(GynecoDbContext gynecoDbContext, IUserService userService)
     {
+        UserService = userService;
         PatientRepository = new PatientRepository(gynecoDbContext);
         DoctorRepository = new DoctorRepository(gynecoDbContext);
         ClinicRepository = new ClinicRepository(gynecoDbContext);

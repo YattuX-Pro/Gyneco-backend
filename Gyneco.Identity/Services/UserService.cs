@@ -27,22 +27,22 @@ namespace Kada.Identity.Services
 
         public string UserId { get => _contextAccessor?.HttpContext?.User?.FindFirstValue("uid"); }
 
-        public async Task<UserModel> GetUtilisateur(string userId)
+        public async Task<UserModel> GetUserAsync(Guid userId)
         {
-            var utilisateur = await _userManager.FindByIdAsync(userId);
+            var utilisateur = await _userManager.FindByIdAsync(userId.ToString());
             return new UserModel
             {
                 Email = utilisateur.Email,
                 Id = utilisateur.Id,
                 Firstname = utilisateur.FirstName,
                 Lastname = utilisateur.LastName,
-                Roles = await GetRoleInfos(utilisateur),
+                Roles = await GetRoleInfosAsync(utilisateur),
                 PhoneNumber = utilisateur.PhoneNumber,
                 Username = utilisateur.UserName,
             };
         }
 
-        public async Task<UserModelUpdate> UpdateUser(UserModelUpdate model)
+        public async Task<UserModelUpdate> UpdateUserAsync(UserModelUpdate model)
         {
             var user =  _userManager.FindByIdAsync(model.Id.ToString()).Result;
             if(user == null)
@@ -165,7 +165,7 @@ namespace Kada.Identity.Services
             return true;
         }
 
-        public async Task<List<RoleModel>> GetRoles()
+        public async Task<List<RoleModel>> GetRolesAsync()
         {
             var role = await _roleManager.Roles.ToListAsync();
             return role.Select(r => new RoleModel()
@@ -177,7 +177,7 @@ namespace Kada.Identity.Services
             }).ToList();
         }
 
-        public async Task<string> CreateRole(CreateRoleModel role)
+        public async Task<string> CreateRoleAsync(CreateRoleModel role)
         {
             var result = await _roleManager.CreateAsync(new ApplicationUserRoles()
             {
@@ -188,14 +188,19 @@ namespace Kada.Identity.Services
             return result.ToString();
         }
 
-        public async Task<string> DeleteRole(string roleId)
+        public async Task<string> DeleteRoleAsync(Guid roleId)
         {
-            var role = await _roleManager.FindByIdAsync(roleId);
+            var role = await _roleManager.FindByIdAsync(roleId.ToString());
             var result = await _roleManager.DeleteAsync(role);
             return result.ToString();
         }
 
-        private async Task<List<RoleInfo>> GetRoleInfos(ApplicationUser user)
+        public async Task<bool> UserExistAsync(Guid userId)
+        {
+            return await _userManager.Users.AnyAsync(u => u.Id == userId);
+        }
+
+        private async Task<List<RoleInfo>> GetRoleInfosAsync(ApplicationUser user)
         {
             var roles = await _userManager.GetRolesAsync(user);
 
@@ -214,4 +219,5 @@ namespace Kada.Identity.Services
             return rolesInfo;
         }
     }
+    
 }

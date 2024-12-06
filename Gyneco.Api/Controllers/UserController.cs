@@ -25,16 +25,16 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<UserModel> GetUser(string id)
+    public async Task<UserModel> GetUser(Guid id)
     {
-        return await _userService.GetUtilisateur(id);
+        return await _userService.GetUserAsync(id);
     }
 
     [HttpPut]
     public async Task<UserModelUpdate> UpdateUser(UserModelUpdate userModel)
     {
         if (userModel == null) BadRequest("L'utilisateur ne peut etre null");
-        return await _userService.UpdateUser(userModel);
+        return await _userService.UpdateUserAsync(userModel);
     }
 
     [HttpDelete]
@@ -48,18 +48,18 @@ public class UserController : ControllerBase
     [HttpGet]
     public async Task<List<RoleModel>> GetRoleListPage()
     {
-        return await _userService.GetRoles();
+        return await _userService.GetRolesAsync();
     }
 
     [HttpPost]
     public async Task<string> CreateRole(CreateRoleModel role)
     {
-        return await _userService.CreateRole(role);
+        return await _userService.CreateRoleAsync(role);
     }
 
     [HttpDelete]
-    public async Task<string> DeleteRole(string roleId)
+    public async Task<string> DeleteRole(Guid roleId)
     {
-        return await _userService.DeleteRole(roleId);
+        return await _userService.DeleteRoleAsync(roleId);
     }
 }

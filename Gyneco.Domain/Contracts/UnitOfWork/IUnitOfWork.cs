@@ -1,3 +1,4 @@
+using Gyneco.Domain.Contracts.Identity;
 using Gyneco.Domain.Contracts.Persistence;
 
 namespace Gyneco.Domain.Contracts.UnitOfWork;
@@ -12,4 +13,5 @@ public interface IUnitOfWork
     public IPrescriptionRepository PrescriptionRepository { get; }
     public IScheduleRepository ScheduleRepository { get; }
     public IAppointmentRepository AppointmentRepository { get; }
+    public IUserService UserService { get; }
 }
