@@ -34,17 +34,7 @@ namespace Gyneco.Identity.DbContext
            .HasForeignKey(ur => ur.RoleId)
            .IsRequired();
             
-            builder.Entity<Appointment>()
-                .HasOne(a => a.Patient)
-                .WithMany(p => p.Appointments)
-                .HasForeignKey(a => a.PatientId)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            builder.Entity<Appointment>()
-                .HasOne(a => a.Doctor)
-                .WithMany(d => d.Appointments)
-                .HasForeignKey(a => a.DoctorId)
-                .OnDelete(DeleteBehavior.NoAction);
+            
         }
     }
 }

@@ -1,3 +1,4 @@
+using Gyneco.Application.Features.Patient.Queries.GetPatientRequestDetail;
 using Gyneco.Application.Models.Search;
 using Gyneco.Domain.Contracts.UnitOfWork;
 using Gyneco.Domain.Identity;
@@ -6,26 +7,28 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Gyneco.Application.Features.Patient.Queries.GetPatientRequestList;
 
-public class GetPatientRequestQueryHandler : IRequestHandler<GetPatientRequestQuery, SearchResult<GetPatientRequestDTO>>
+public class PatientRequestQueryHandler : IRequestHandler<PatientRequestQuery, SearchResult<PatientDetailDTO>>
 {
     private readonly IUnitOfWork _uow;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public GetPatientRequestQueryHandler(IUnitOfWork uow, UserManager<ApplicationUser> userManager)
+    public PatientRequestQueryHandler(IUnitOfWork uow, UserManager<ApplicationUser> userManager)
     {
         _uow = uow;
         _userManager = userManager;
     }
     
-    public Task<SearchResult<GetPatientRequestDTO>> Handle(GetPatientRequestQuery request, CancellationToken cancellationToken)
+    public async Task<SearchResult<PatientDetailDTO>> Handle(PatientRequestQuery request, CancellationToken cancellationToken)
     {
         var filteredRequest = GetPatientQuery(request.Filters);
-        var filteredPatient = (request.PageIndex == -1) ? filteredRequest.ToList() : filteredRequest.Skip(request.PageIndex  * request.PageSize).Take(request.PageSize).ToList();
-        var row = new List<GetPatientRequestDTO>();
+        var filteredPatient = (request.PageIndex == -1) 
+            ? filteredRequest.ToList() 
+            : filteredRequest.Skip(request.PageIndex  * request.PageSize).Take(request.PageSize).ToList();
+        var row = new List<PatientDetailDTO>();
 
         foreach (var patient in filteredPatient)
         {
-            row.Add(new GetPatientRequestDTO
+            row.Add(new PatientDetailDTO
             {
                 Id = patient.Id,
                 FirstName = patient.FirstName,
@@ -36,18 +39,18 @@ public class GetPatientRequestQueryHandler : IRequestHandler<GetPatientRequestQu
                 Email = patient.Email,
                 Address = patient.Address,
                 UserId = patient.UserId,
-                User = _userManager.Users.SingleOrDefault(u => u.Id == patient.UserId)
+                User = await _uow.UserService.GetUserAsync(patient.UserId)
             });
         }
         
-        var result = new SearchResult<GetPatientRequestDTO>
+        var result = new SearchResult<PatientDetailDTO>
         {
             Results = row,
             TotalCount = row.Count,
             CountPerPage = request.PageSize,
             Page = request.PageIndex,
         };
-        return Task.FromResult(result);
+        return result;
     }
 
     private IQueryable<Domain.Patient> GetPatientQuery(Dictionary<string, string> filters)

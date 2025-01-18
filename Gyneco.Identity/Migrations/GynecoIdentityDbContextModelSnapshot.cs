@@ -22,97 +22,6 @@ namespace Gyneco.Identity.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Gyneco.Domain.Appointment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("AppointmentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("DoctorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("PatientId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ReasonForVisit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("Appointment");
-                });
-
-            modelBuilder.Entity("Gyneco.Domain.Doctor", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Specialty")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Doctor");
-                });
-
             modelBuilder.Entity("Gyneco.Domain.Identity.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
@@ -191,7 +100,7 @@ namespace Gyneco.Identity.Migrations
                         {
                             Id = new Guid("32173892-2e8f-4f7b-a059-8d88eb21482b"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "79cdba3b-1503-4456-82f6-2a301d932301",
+                            ConcurrencyStamp = "683bbee0-16a0-47a1-b2e7-d6265a13ddf6",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -199,7 +108,7 @@ namespace Gyneco.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEO29ScDbO73jH4gODwUgbEewa8c2bSpZyD6cdbeLTb81av4dxvRiYyUXvcQEa7c8nA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECcvIGx6zyi39+xiKNttWCT7e1O+LzQOaQgOS4LZ5qZBg3+nooCT5ZjMaOX8lmQMVQ==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
@@ -208,7 +117,7 @@ namespace Gyneco.Identity.Migrations
                         {
                             Id = new Guid("e19eb100-f7b6-4081-b6ab-412958bb700e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "65bd78c0-4787-4d16-9550-bb9f2b2d04e0",
+                            ConcurrencyStamp = "a1c58f06-8296-43ac-b985-5ae2ea12f6b2",
                             Email = "doctor@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -216,7 +125,7 @@ namespace Gyneco.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "DOCTOR@LOCALHOST.COM",
                             NormalizedUserName = "DOCTOR@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKvS0GeeaQKTUD8NWWyyJTZ/xEuvzZmb4TS6vRld4kHhxCz9cuYL16JcV5Q46MIfsg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHWseBjyiNwEmaS73cR2sd2+gdaJsQE7mSVlpA+fbcbROWsmViCTA5t5Dh6F7DdHOA==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "doctor@localhost.com"
@@ -225,7 +134,7 @@ namespace Gyneco.Identity.Migrations
                         {
                             Id = new Guid("a9fce60c-1947-4313-b124-9300d1b4a127"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e8464579-e2b1-42a4-b821-3ebcfee4fd3c",
+                            ConcurrencyStamp = "cd904930-8737-447e-8fc4-11e084f5e058",
                             Email = "patient@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -233,7 +142,7 @@ namespace Gyneco.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PATIENT@LOCALHOST.COM",
                             NormalizedUserName = "PATIENT@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGAyq8G9UP4UYon9KQxP27LG8syPtx/yfMw5XWzJ/lqOuLpjo8SoCnAfMwfKJrcFNA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE2ZCiaIa3bJlPI+kq1oMoeoiV3+lPmXhwVdbLTOmY9QqKQ8t4/JNkD26r7E6d9BMQ==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "patient@localhost.com"
@@ -286,98 +195,6 @@ namespace Gyneco.Identity.Migrations
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         });
-                });
-
-            modelBuilder.Entity("Gyneco.Domain.Patient", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateOnly>("DateOfBirth")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Patient");
-                });
-
-            modelBuilder.Entity("Gyneco.Domain.Schedule", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DayOfWeek")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("DoctorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<TimeSpan>("EndTime")
-                        .HasColumnType("time");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<TimeSpan>("StartTime")
-                        .HasColumnType("time");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
-
-                    b.ToTable("Schedule");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -522,58 +339,6 @@ namespace Gyneco.Identity.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Gyneco.Domain.Appointment", b =>
-                {
-                    b.HasOne("Gyneco.Domain.Doctor", "Doctor")
-                        .WithMany("Appointments")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Gyneco.Domain.Patient", "Patient")
-                        .WithMany("Appointments")
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-
-                    b.Navigation("Patient");
-                });
-
-            modelBuilder.Entity("Gyneco.Domain.Doctor", b =>
-                {
-                    b.HasOne("Gyneco.Domain.Identity.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Gyneco.Domain.Patient", b =>
-                {
-                    b.HasOne("Gyneco.Domain.Identity.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Gyneco.Domain.Schedule", b =>
-                {
-                    b.HasOne("Gyneco.Domain.Doctor", "Doctor")
-                        .WithMany("Schedules")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("Gyneco.Domain.Identity.ApplicationUserRoles", null)
@@ -629,13 +394,6 @@ namespace Gyneco.Identity.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Gyneco.Domain.Doctor", b =>
-                {
-                    b.Navigation("Appointments");
-
-                    b.Navigation("Schedules");
-                });
-
             modelBuilder.Entity("Gyneco.Domain.Identity.ApplicationUser", b =>
                 {
                     b.Navigation("UserRoles");
@@ -644,11 +402,6 @@ namespace Gyneco.Identity.Migrations
             modelBuilder.Entity("Gyneco.Domain.Identity.ApplicationUserRoles", b =>
                 {
                     b.Navigation("UserRoles");
-                });
-
-            modelBuilder.Entity("Gyneco.Domain.Patient", b =>
-                {
-                    b.Navigation("Appointments");
                 });
 #pragma warning restore 612, 618
         }

@@ -19,7 +19,6 @@ namespace Gyneco.Domain
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public Guid UserId { get; set; }
-        public ApplicationUser User { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
         public ICollection<Schedule> Schedules { get; set; }
     }

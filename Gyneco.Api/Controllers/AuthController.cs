@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gyneco.Api.Controllers;
 
+[Route("api/[controller]/[action]")]
+[ApiController]
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authenticationService;

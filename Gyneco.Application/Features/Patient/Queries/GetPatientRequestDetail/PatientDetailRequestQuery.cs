@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Gyneco.Application.Features.Patient.Queries.GetPatientRequestDetail;
 
-public class GetPatientDetailRequestQuery : IRequest<GetPatientDetailDTO>
+public class PatientDetailRequestQuery : IRequest<PatientDetailDTO>
 {
     public Guid Id { get; set; }
 }

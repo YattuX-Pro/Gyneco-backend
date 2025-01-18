@@ -23,6 +23,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Features\Payment\" />
+      <Folder Include="Features\Prescription\" />
+      <Folder Include="Features\Schedule\" />
       <Folder Include="Utils\" />
     </ItemGroup>
 </Project>

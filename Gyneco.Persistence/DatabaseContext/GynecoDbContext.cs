@@ -19,23 +19,18 @@ namespace Gyneco.Persistence.DatabaseContext
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(GynecoDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
+            
+            modelBuilder.Entity<Appointment>()
+                .HasOne(a => a.Patient)
+                .WithMany(p => p.Appointments)
+                .HasForeignKey(a => a.PatientId)
+                .OnDelete(DeleteBehavior.NoAction);
 
-            if (IsMigrating())
-            {
-                // Ignorer ces entités uniquement pendant la création de la migration
-                modelBuilder.Ignore<Patient>();
-                modelBuilder.Ignore<Doctor>();
-                modelBuilder.Ignore<Schedule>();
-                modelBuilder.Ignore<Appointment>();
-            }
-            else
-            {
-                // Autoriser ces entités pour la lecture/écriture
-                modelBuilder.Entity<Patient>();
-                modelBuilder.Entity<Doctor>();
-                modelBuilder.Entity<Schedule>();
-                modelBuilder.Entity<Appointment>();
-            }
+            modelBuilder.Entity<Appointment>()
+                .HasOne(a => a.Doctor)
+                .WithMany(d => d.Appointments)
+                .HasForeignKey(a => a.DoctorId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
         
         private bool IsMigrating()

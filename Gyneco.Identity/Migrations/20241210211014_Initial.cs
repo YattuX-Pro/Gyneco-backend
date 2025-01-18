@@ -162,117 +162,6 @@ namespace Gyneco.Identity.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Doctor",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Specialty = table.Column<int>(type: "int", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Doctor", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Doctor_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Patient",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateOfBirth = table.Column<DateOnly>(type: "date", nullable: false),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Patient", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Patient_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Schedule",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DayOfWeek = table.Column<int>(type: "int", nullable: false),
-                    StartTime = table.Column<TimeSpan>(type: "time", nullable: false),
-                    EndTime = table.Column<TimeSpan>(type: "time", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Schedule", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Schedule_Doctor_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctor",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Appointment",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PatientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AppointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReasonForVisit = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Appointment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Appointment_Doctor_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctor",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Appointment_Patient_PatientId",
-                        column: x => x.PatientId,
-                        principalTable: "Patient",
-                        principalColumn: "Id");
-                });
-
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
@@ -288,9 +177,9 @@ namespace Gyneco.Identity.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("32173892-2e8f-4f7b-a059-8d88eb21482b"), 0, "79cdba3b-1503-4456-82f6-2a301d932301", "admin@localhost.com", true, "System", "Admin", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEO29ScDbO73jH4gODwUgbEewa8c2bSpZyD6cdbeLTb81av4dxvRiYyUXvcQEa7c8nA==", null, false, null, false, "admin@localhost.com" },
-                    { new Guid("a9fce60c-1947-4313-b124-9300d1b4a127"), 0, "e8464579-e2b1-42a4-b821-3ebcfee4fd3c", "patient@localhost.com", true, "System", "patient", false, null, "PATIENT@LOCALHOST.COM", "PATIENT@LOCALHOST.COM", "AQAAAAIAAYagAAAAEGAyq8G9UP4UYon9KQxP27LG8syPtx/yfMw5XWzJ/lqOuLpjo8SoCnAfMwfKJrcFNA==", null, false, null, false, "patient@localhost.com" },
-                    { new Guid("e19eb100-f7b6-4081-b6ab-412958bb700e"), 0, "65bd78c0-4787-4d16-9550-bb9f2b2d04e0", "doctor@localhost.com", true, "System", "doctor", false, null, "DOCTOR@LOCALHOST.COM", "DOCTOR@LOCALHOST.COM", "AQAAAAIAAYagAAAAEKvS0GeeaQKTUD8NWWyyJTZ/xEuvzZmb4TS6vRld4kHhxCz9cuYL16JcV5Q46MIfsg==", null, false, null, false, "doctor@localhost.com" }
+                    { new Guid("32173892-2e8f-4f7b-a059-8d88eb21482b"), 0, "683bbee0-16a0-47a1-b2e7-d6265a13ddf6", "admin@localhost.com", true, "System", "Admin", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAECcvIGx6zyi39+xiKNttWCT7e1O+LzQOaQgOS4LZ5qZBg3+nooCT5ZjMaOX8lmQMVQ==", null, false, null, false, "admin@localhost.com" },
+                    { new Guid("a9fce60c-1947-4313-b124-9300d1b4a127"), 0, "cd904930-8737-447e-8fc4-11e084f5e058", "patient@localhost.com", true, "System", "patient", false, null, "PATIENT@LOCALHOST.COM", "PATIENT@LOCALHOST.COM", "AQAAAAIAAYagAAAAEE2ZCiaIa3bJlPI+kq1oMoeoiV3+lPmXhwVdbLTOmY9QqKQ8t4/JNkD26r7E6d9BMQ==", null, false, null, false, "patient@localhost.com" },
+                    { new Guid("e19eb100-f7b6-4081-b6ab-412958bb700e"), 0, "a1c58f06-8296-43ac-b985-5ae2ea12f6b2", "doctor@localhost.com", true, "System", "doctor", false, null, "DOCTOR@LOCALHOST.COM", "DOCTOR@LOCALHOST.COM", "AQAAAAIAAYagAAAAEHWseBjyiNwEmaS73cR2sd2+gdaJsQE7mSVlpA+fbcbROWsmViCTA5t5Dh6F7DdHOA==", null, false, null, false, "doctor@localhost.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -302,16 +191,6 @@ namespace Gyneco.Identity.Migrations
                     { new Guid("57838d8b-8b16-4b01-8018-a6b316785d8e"), new Guid("a9fce60c-1947-4313-b124-9300d1b4a127"), "UserRoles", new Guid("00000000-0000-0000-0000-000000000000") },
                     { new Guid("6a41b122-c556-4f2e-8b87-948f115f274c"), new Guid("e19eb100-f7b6-4081-b6ab-412958bb700e"), "UserRoles", new Guid("00000000-0000-0000-0000-000000000000") }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Appointment_DoctorId",
-                table: "Appointment",
-                column: "DoctorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Appointment_PatientId",
-                table: "Appointment",
-                column: "PatientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -351,29 +230,11 @@ namespace Gyneco.Identity.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Doctor_UserId",
-                table: "Doctor",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Patient_UserId",
-                table: "Patient",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Schedule_DoctorId",
-                table: "Schedule",
-                column: "DoctorId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Appointment");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -390,16 +251,7 @@ namespace Gyneco.Identity.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Schedule");
-
-            migrationBuilder.DropTable(
-                name: "Patient");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "Doctor");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

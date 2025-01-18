@@ -4,10 +4,10 @@ using Gyneco.Application.Features.Patient.Queries.GetPatientRequestDetail;
 using Gyneco.Application.Features.Patient.Queries.GetPatientRequestList;
 using Gyneco.Application.Models.Search;
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gyneco.Api.Controllers;
+
 [ApiController]
 [Route("api/[controller]/[action]")]
 public class PatientController : ControllerBase
@@ -20,17 +20,11 @@ public class PatientController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<IEnumerable<GetPatientRequestDTO>>> GetPatientList([FromBody] PageSearchDTO searchRequest)
+    public async Task<ActionResult<IEnumerable<PatientDetailDTO>>> GetPatientList([FromBody] PatientRequestQuery request)
     {
         try
         {
-            var patientRequest = new GetPatientRequestQuery
-            {
-                PageSize = searchRequest.PageSize,
-                PageIndex = searchRequest.PageIndex,
-                Filters = searchRequest.Filters
-            };
-            var patientResult = await _mediator.Send(patientRequest);
+            var patientResult = await _mediator.Send(request);
             return Ok(patientResult);
         }
         catch (Exception e)
@@ -39,15 +33,13 @@ public class PatientController : ControllerBase
         }
     }
     
-    [HttpGet("{id}")]
-    public async Task<ActionResult<GetPatientDetailDTO>> GetPatientDetail(Guid id)
+    [HttpGet]
+    public async Task<ActionResult<PatientDetailDTO>> GetPatientDetail(PatientDetailRequestQuery request)
     {
         try
         {
-            var request = new GetPatientDetailRequestQuery() { Id = id };
-            var patient = await _mediator.Send(request);
-            if(patient == null) return NotFound(id);
-            return Ok(patient);
+            var result = await _mediator.Send(request);
+            return Ok(result);
         }
         catch (Exception e)
         {
